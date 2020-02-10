@@ -107,7 +107,12 @@ GameManager.prototype.move = function (direction) {
 
   var self = this;
 
-  if (this.isGameTerminated()) return; // Don't do anything if the game's over
+  // Make "keep playing" only last long enough to get you past the "game won" screen, and then re-arm the "did I win again?" counter.
+  if(this.keepPlaying && this.won)
+  { this.keepPlaying = this.won = false;
+  }
+
+  if(this.isGameTerminated()) return; // Don't do anything if the game's over
 
   var cell, tile;
 
@@ -146,7 +151,8 @@ GameManager.prototype.move = function (direction) {
                 self.score += merged.value;
 
                 // The mighty 2048 tile
-                if (merged.value === 2048) self.won = true;
+                // if (merged.value === 2048) self.won = true;
+                if (merged.value >= 1024) self.won = true;
               } else {
                 self.moveTile(tile, positions.farthest);
               }
