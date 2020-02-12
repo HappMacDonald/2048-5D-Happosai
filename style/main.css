@@ -100,11 +100,27 @@ p {
   margin-bottom: 10px;
   line-height: 1.65; }
 
-a {
-  color: #776e65;
+a
+{ color: #776e65;
   font-weight: bold;
   text-decoration: underline;
-  cursor: pointer; }
+  cursor: pointer;
+}
+
+a.button
+{ display: inline-block;
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #f9f6f2;
+  height: 40px;
+  line-height: 42px;
+  margin-left: 9px;
+  position: relative;
+  top: -10px;
+}
+
 
 strong.important {
   text-transform: uppercase; }
@@ -623,16 +639,17 @@ hr {
       .game-container .game-message .lower {
         display: block;
         margin-top: 59px; }
-      .game-container .game-message a {
-        display: inline-block;
-        background: #8f7a66;
-        border-radius: 3px;
-        padding: 0 20px;
-        text-decoration: none;
-        color: #f9f6f2;
-        height: 40px;
-        line-height: 42px;
-        margin-left: 9px; }
+.game-container .game-message a
+{ display: inline-block;
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #f9f6f2;
+  height: 40px;
+  line-height: 42px;
+  margin-left: 9px;
+}
         .game-container .game-message a.keep-playing-button {
           display: none; }
       .game-container .game-message .score-sharing {
