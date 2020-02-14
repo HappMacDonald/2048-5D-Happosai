@@ -6,6 +6,8 @@ function GameManager(size, InputManager, Actuator, ScoreManager) {
 
   this.startTiles   = 2;
 
+  this.saveTimer    = null;
+
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
@@ -16,6 +18,7 @@ function GameManager(size, InputManager, Actuator, ScoreManager) {
 // Restart the game
 GameManager.prototype.restart = function () {
   this.actuator.continue();
+  localStorage.removeItem("GameBoard");
   this.setup();
 };
 
@@ -34,16 +37,41 @@ GameManager.prototype.isGameTerminated = function () {
 };
 
 // Set up the game
-GameManager.prototype.setup = function () {
-  this.grid        = new Grid(this.size);
+GameManager.prototype.setup = function ()
+{ let pickle = localStorage.getItem("GameBoard");
+  this.grid = new Grid(this.size);
 
-  this.score       = 0;
-  this.over        = false;
-  this.won         = false;
-  this.keepPlaying = false;
+  if(pickle!=null)
+  { let obj = JSON.retrocycle(JSON.parse(LZString.decompress(pickle)));
+  // { let obj = JSON.parse(LZString.decompress(pickle));
+//LZString.compress(JSON.stringify(JSON.decycle(this)))
+    console.log("obj", obj);
+    console.log("obj.grid.cells", obj.grid.cells);
+    this.grid.setEachCell
+    ( (x, y, z, w, v, cell) =>
+      { cell = obj.grid.cells[x][y][z][w][v]; // value is local, does not change caller argument.
+        if(cell==null)
+        { return null;
+        } else
+        { return new Tile({ x: x, y: y, z: z, w: w, v: v }, cell.value);
+        }
+      }
+    );
+    this.score       = obj.score;
+    this.over        = obj.over;
+    this.won         = obj.won;
+    this.keepPlaying = obj.keepPlaying;
+    console.log("this", this);
+  }
+  else
+  { this.score       = 0;
+    this.over        = false;
+    this.won         = false;
+    this.keepPlaying = false;
 
-  // Add the initial tiles
-  this.addStartTiles();
+    // Add the initial tiles
+    this.addStartTiles();
+  }
 
   // Update the actuator
   this.actuate();
@@ -179,6 +207,7 @@ GameManager.prototype.move = function (direction) {
     }
 
     this.actuate();
+    this.saveStateToPersistantStartTimer();
   }
 };
 
@@ -285,3 +314,45 @@ GameManager.prototype.positionsEqual = function (first, second) {
          first.z === second.z && first.w == second.w &&
          first.v === second.v;
 };
+
+GameManager.prototype.saveStateToPersistantStartTimer = function()
+{ clearTimeout(this.saveTimer);
+  this.saveTimer = setTimeout(() => {this.saveStateToPersistantFinishTimer()}, 1000);
+}
+
+GameManager.prototype.saveStateToPersistantFinishTimer = function()
+{ let pickle;
+  clearTimeout(this.saveTimer);
+  pickle =
+    LZString.compress
+    ( JSON.stringify
+      ( JSON.decycle
+        ( { "grid": { "cells": this.grid.cells }
+          , "score": this.score
+          , "over": this.over
+          , "won": this.won
+          , "keepPlaying": this.keepPlaying
+          }
+        )
+      )
+    );
+  console.log("Trying to save "+ pickle.length +" bytes");
+  console.log("this.grid", this.grid);
+  console.log("this", this);
+
+  if(pickle.length < 3500)
+  { localStorage.setItem("GameBoard", pickle);
+  }
+  else
+  { console.log("Couldn't save state because "+ pickle.length +" bytes is too many. D:");
+  }
+  console.log("obj", JSON.retrocycle(JSON.parse(LZString.decompress(localStorage.getItem("GameBoard")))));
+}
+
+// function setCookie(cname, cvalue)
+// { let d = new Date();
+//   d.setTime(d.getTime() + (99999*24*60*60*1000));
+//   var expires = "expires="+ d.toUTCString();
+//   document.cookie = cname + "=" + cvalue + ";" + expires;
+// }
+

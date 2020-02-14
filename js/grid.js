@@ -65,6 +65,21 @@ Grid.prototype.eachCell = function (callback) {
   }
 };
 
+Grid.prototype.setEachCell = function (callback)
+{ for (var x = 0; x < this.size; x++)
+  { for (var y = 0; y < this.size; y++)
+    { for (var z = 0; z < this.size; z++)
+      { for (var w = 0; w < this.size; w++)
+        { for (var v = 0; v < this.size; ++v)
+          { this.cells[x][y][z][w][v] = callback(x, y, z, w, v, this.cells[x][y][z][w][v]);
+          }
+        }
+      }
+    }
+  }
+};
+
+
 // Check if there are any cells available
 Grid.prototype.cellsAvailable = function () {
   return !!this.availableCells().length;

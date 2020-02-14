@@ -1,0 +1,309 @@
+function compress(gameBoard)
+{ let ret = '';
+
+}
+
+{ "size": 2
+, "inputManager":
+  { "events":
+    { "move": [ null ]
+    , "restart": [ null ]
+    , "keepPlaying": [ null ]
+    }
+  }
+, "scoreManager":
+  { "key": "bestScore"
+  , "storage":  { "bestScore": "9824"  }
+  }
+, "actuator":
+  { "tileContainer": { }
+  , "scoreContainer": { }
+  , "bestContainer": { }
+  , "messageContainer": { }
+  , "sharingContainer": { }
+  , "score": 9696
+  }
+, "startTiles": 2
+, "grid":
+  { "size": 2
+  , "cells":
+    [ [ [ [ [ null, null ]
+          , [ null
+            , { "x": 0
+              , "y": 0
+              , "z": 0
+              , "w": 1
+              , "v": 1
+              , "value": 8
+              , "previousPosition":
+                { "x": 0
+                , "y": 0
+                , "z": 0
+                , "w": 1
+                , "v": 1
+                }
+              , "mergedFrom": null
+              }
+            ]
+          ]
+        , [ [ null, null ]
+          , [ null, null ]
+          ]
+        ]
+    , [ [ [ null, null ]
+        , [ null
+          , { "x": 0
+            , "y": 1
+            , "z": 0
+            , "w": 1
+            , "v": 1
+            , "value": 2
+            , "previousPosition": null
+            , "mergedFrom": null
+            }
+          ]
+        ]
+      , [ [ null, null ]
+        , [ { "x": 0
+            , "y": 1
+            , "z": 1
+            , "w": 1
+            , "v": 0
+            , "value": 2
+            , "previousPosition": null
+            , "mergedFrom": null
+            }
+          , { "x": 0
+            , "y": 1
+            , "z": 1
+            , "w": 1
+            , "v": 1
+            , "value": 4
+            , "previousPosition":
+              { "x": 0
+              , "y": 1
+              , "z": 1
+              , "w": 1
+              , "v": 1
+              }
+            , "mergedFrom": null
+            }
+          ]
+        ]
+      ]
+    ]
+    , [ [ [ [ null
+            , { "x": 1
+              , "y": 0
+              , "z": 0
+              , "w": 0
+              , "v": 1
+              , "value": 2
+              , "previousPosition":
+                { "x": 1
+                , "y": 0
+                , "z": 0
+                , "w": 0
+                , "v": 1
+                }
+              , "mergedFrom": null
+              }
+            ]
+          , [ { "x": 1
+              , "y": 0
+              , "z": 0
+              , "w": 1
+              , "v": 0
+              , "value": 2
+              , "previousPosition":
+                { "x": 0
+                , "y": 0
+                , "z": 0
+                , "w": 1
+                , "v": 0
+                }
+              , "mergedFrom": null
+              }
+            , { "x": 1
+              , "y": 0
+              , "z": 0
+              , "w": 1
+              , "v": 1
+              , "value": 16
+              , "previousPosition":
+                { "x": 1
+                , "y": 0
+                , "z": 0
+                , "w": 1
+                , "v": 1
+                }
+              , "mergedFrom": null
+              }
+            ]
+          ]
+        , [ [ { "x": 1
+              , "y": 0
+              , "z": 1
+              , "w": 0
+              , "v": 0
+              , "value": 2
+              , "previousPosition":
+                { "x": 1
+                , "y": 0
+                , "z": 1
+                , "w": 0
+                , "v": 0
+                }
+              , "mergedFrom": null
+              }
+            , { "x": 1
+              , "y": 0
+              , "z": 1
+              , "w": 0
+              , "v": 1
+              , "value": 4
+              , "previousPosition":
+                { "x": 1
+                , "y": 0
+                , "z": 1
+                , "w": 0
+                , "v": 1
+                }
+              , "mergedFrom": null
+              }
+            ]
+          , [ { "x": 1
+              , "y": 0
+              , "z": 1
+              , "w": 1
+              , "v": 0
+              , "value": 8
+              , "previousPosition":
+                { "x": 0
+                , "y": 0
+                , "z": 1
+                , "w": 1
+                , "v": 0
+                }
+              , "mergedFrom": null
+              }
+            , { "x": 1
+              , "y": 0
+              , "z": 1
+              , "w": 1
+              , "v": 1
+              , "value": 128
+              , "previousPosition": null
+              , "mergedFrom":
+                [ { "x": 1
+                  , "y": 0
+                  , "z": 1
+                  , "w": 1
+                  , "v": 1
+                  , "value": 64
+                  , "previousPosition":
+                    { "x": 0
+                    , "y": 0
+                    , "z": 1
+                    , "w": 1
+                    , "v": 1
+                    }
+                  , "mergedFrom": null
+                  }
+                , { "x": 1
+                  , "y": 0
+                  , "z": 1
+                  , "w": 1
+                  , "v": 1
+                  , "value": 64
+                  , "previousPosition":
+                    { "x": 1
+                    , "y": 0
+                    , "z": 1
+                    , "w": 1
+                    , "v": 1
+                    }
+                  , "mergedFrom": null
+                  }
+                ]
+              }
+            ]
+          ]
+        ]
+      , [ [ [ null
+            , { "x": 1
+              , "y": 1
+              , "z": 0
+              , "w": 0
+              , "v": 1
+              , "value": 2
+              , "previousPosition":
+                { "x": 1
+                , "y": 1
+                , "z": 0
+                , "w": 0
+                , "v": 1
+                }
+              , "mergedFrom": null
+              }
+            ]
+          , [ { "x": 1
+              , "y": 1
+              , "z": 0
+              , "w": 1
+              , "v": 0
+              , "value": 4
+              , "previousPosition":
+                { "x": 1
+                , "y": 1
+                , "z": 0
+                , "w": 1
+                , "v": 0
+                }
+              , "mergedFrom": null
+              }
+            , { "x": 1
+              , "y": 1
+              , "z": 0
+              , "w": 1
+              , "v": 1
+              , "value": 2
+              , "previousPosition":
+                { "x": 0
+                , "y": 1
+                , "z": 0
+                , "w": 1
+                , "v": 1
+                }
+              , "mergedFrom": null
+              }
+            ]
+          ]
+        , [ [ null, null ]
+          , [ null
+            , { "x": 1
+              , "y": 1
+              , "z": 1
+              , "w": 1
+              , "v": 1
+              , "value": 1024
+              , "previousPosition":
+                { "x": 1
+                , "y": 1
+                , "z": 1
+                , "w": 1
+                , "v": 1
+                }
+              , "mergedFrom": null
+              }
+            ]
+          ]
+        ]
+      ]
+    ]
+  }
+, "score": 9824
+, "over": false
+, "won": false
+, "keepPlaying": false
+}
