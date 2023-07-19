@@ -51,13 +51,18 @@ KeyboardInputManager.prototype.listen = function () {
         self.emit("move", mapped);
       }
 
-      if (event.which === 32) self.restart.bind(self)(event);
+//      if (event.which === 32) self.restart.bind(self)(event);
+      if(event.keyCode == 32 && event.target == document.body)
+      { event.preventDefault();
+        return false;
+      }
     }
   });
 
-  var retry = document.querySelector(".retry-button");
-  retry.addEventListener("click", this.restart.bind(this));
-  retry.addEventListener("touchend", this.restart.bind(this));
+
+  // var retry = document.querySelector(".retry-button");
+  // retry.addEventListener("click", this.restart.bind(this));
+  // retry.addEventListener("touchend", this.restart.bind(this));
 
   retry = document.querySelector(".reset-button");
   retry.addEventListener("click", this.restart.bind(this));
